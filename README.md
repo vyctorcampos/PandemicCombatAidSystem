@@ -11,9 +11,9 @@ Quando o mundo é atingido por uma pandemia sem remédio imediato, além das hab
 
 ## -------------------------------DATABASE------------------------
 
-*Como default o spring.datasource.username=postgres vem como "postgres" 
+* Como default o spring.datasource.username=postgres vem como "postgres" 
 
-*Dentro app/src/main/application.properties substitua spring.datasource.password=12345 para corresponder à sua senha do banco de dados.
+* Dentro app/src/main/application.properties substitua spring.datasource.password=12345 para corresponder à sua senha do banco de dados.
 
 ## -------------------------------ENDPOINT-------------------------
 # /hospital
