@@ -13,7 +13,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name = "hospital", schema = "public")
 public class Hospital {
@@ -22,28 +21,26 @@ public class Hospital {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "hospital_id")
 	private long hospital_id;
-	
+
 	@Column(name = "name")
 	private String name;
-	
+
 	@Column(name = "address")
 	private String address;
-	
+
 	@Column(name = "cnpj")
 	private String cnpj;
-	
+
 	@Column(name = "occupancy")
 	private float occupancy;
-	
+
 	@Column(name = "localization")
 	private String localization;
-	
-	@OneToMany (cascade = CascadeType.ALL)
-	@JoinTable(name = "negotiation_resource_join_table",
-	joinColumns = @JoinColumn(name = "negotiation_RH"),
-	   inverseJoinColumns = @JoinColumn (name = "hospital_resource_RH"))
+
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "negotiation_resource_join_table", joinColumns = @JoinColumn(name = "negotiation_RH"), inverseJoinColumns = @JoinColumn(name = "hospital_resource_RH"))
 	private List<RecursosHosp> recursosHosp;
-	
+
 	public Hospital(long hospital_id, String name, String address, String cnpj, float occupancy, String localization,
 			List<RecursosHosp> recursosHosp) {
 		super();
@@ -88,7 +85,6 @@ public class Hospital {
 		this.address = address;
 	}
 
-	
 	public float getOccupancy() {
 		return occupancy;
 	}
@@ -105,7 +101,6 @@ public class Hospital {
 		this.cnpj = cnpj;
 	}
 
-
 	public String getLocalization() {
 		return localization;
 	}
@@ -113,8 +108,6 @@ public class Hospital {
 	public void setLocalization(String localization) {
 		this.localization = localization;
 	}
-
-	
 
 	@Override
 	public int hashCode() {
@@ -175,8 +168,5 @@ public class Hospital {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	
-	
-	
+
 }

@@ -6,15 +6,14 @@ import javax.persistence.Id;
 @Entity
 public class Resources {
 
-	
 	@Id
 	private String name;
-	
+
 	public String getName() {
 		return name;
 	}
 
-	//Getters and Setters
+	// Getters and Setters
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -28,5 +27,5 @@ public class Resources {
 	}
 
 	private int value;
-	
+
 }

@@ -18,23 +18,19 @@ public class Transacao {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long negotiation_id;
-	
+
 	private Long id_first_hospital;
-	
+
 	private Long id_second_hospital;
 
 	private LocalDateTime negotiation_date_time;
-	
-	@OneToMany (cascade = CascadeType.ALL)
-	@JoinTable(name = "negotiation_resource_join_table",
-	joinColumns = @JoinColumn(name = "negotiation_RH"),
-	   inverseJoinColumns = @JoinColumn (name = "hospital_resource_RH"))
+
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "negotiation_resource_join_table", joinColumns = @JoinColumn(name = "negotiation_RH"), inverseJoinColumns = @JoinColumn(name = "hospital_resource_RH"))
 	private List<RecursosHosp> resources_first_hospital;
-	
-	@OneToMany (cascade = CascadeType.ALL)
-	@JoinTable(name = "negotiation_resource_join_table",
-	joinColumns = @JoinColumn(name = "negotiation_RH"),
-	   inverseJoinColumns = @JoinColumn (name = "hospital_resource_RH"))
+
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "negotiation_resource_join_table", joinColumns = @JoinColumn(name = "negotiation_RH"), inverseJoinColumns = @JoinColumn(name = "hospital_resource_RH"))
 	private List<RecursosHosp> resources_second_hospital;
 
 	public long getNegotiation_id() {
@@ -84,8 +80,5 @@ public class Transacao {
 	public void setResources_second_hospital(List<RecursosHosp> resources_second_hospital) {
 		this.resources_second_hospital = resources_second_hospital;
 	}
-	
-	
-	
-	
+
 }

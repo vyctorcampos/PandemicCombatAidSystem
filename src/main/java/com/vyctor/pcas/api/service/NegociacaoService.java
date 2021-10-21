@@ -78,7 +78,6 @@ public class NegociacaoService {
 			trade(hospital1, hospital2, transacao);
 		}
 	}
-	
 
 	private void trade(Hospital hospital1, Hospital hospital2, Transacao transacao) {
 
@@ -96,8 +95,8 @@ public class NegociacaoService {
 		addRecursos2.addAll(recursoFirstHospital);
 
 		for (RecursosHosp transacaoRecurso : recursoFirstHospital) {
-			
-			//quantidade de recursos do primeiro hospital
+
+			// quantidade de recursos do primeiro hospital
 			for (RecursosHosp recursoshsptlHosp : hospital1.getRecursosHosp()) {
 				if (recursoshsptlHosp.getName().equals(transacaoRecurso.getName())) {
 					if (recursoshsptlHosp.getQuantity() == transacaoRecurso.getQuantity()) {
@@ -109,47 +108,46 @@ public class NegociacaoService {
 				}
 			}
 			// mais quantidade de recursos de segundo hospital
-			for(RecursosHosp hospitalRecursos: hospital2.getRecursosHosp()) {
+			for (RecursosHosp hospitalRecursos : hospital2.getRecursosHosp()) {
 				if (hospitalRecursos.getName().equals(transacaoRecurso.getName())) {
 					hospitalRecursos.setQuantity(hospitalRecursos.getQuantity() + transacaoRecurso.getQuantity());
 					addRecursos2.remove(transacaoRecurso);
-					
+
 				}
 			}
 		}
-		
+
 		for (RecursosHosp transacaoRecurso : recursoFirstHospital) {
-			
-		for (RecursosHosp recursoshsptlHosp : hospital2.getRecursosHosp()) {
-			if (recursoshsptlHosp.getName().equals(transacaoRecurso.getName())) {
-				if (recursoshsptlHosp.getQuantity() == transacaoRecurso.getQuantity()) {
+
+			for (RecursosHosp recursoshsptlHosp : hospital2.getRecursosHosp()) {
+				if (recursoshsptlHosp.getName().equals(transacaoRecurso.getName())) {
+					if (recursoshsptlHosp.getQuantity() == transacaoRecurso.getQuantity()) {
 						removerRecursos2.add(recursoshsptlHosp);
-				}else {
-					recursoshsptlHosp.setQuantity(recursoshsptlHosp.getQuantity() - transacaoRecurso.getQuantity());
+					} else {
+						recursoshsptlHosp.setQuantity(recursoshsptlHosp.getQuantity() - transacaoRecurso.getQuantity());
+					}
+
 				}
-				
+			}
+			for (RecursosHosp recursoshsptlHosp : hospital1.getRecursosHosp()) {
+				if (recursoshsptlHosp.getName().equals(transacaoRecurso.getName())) {
+
+					recursoshsptlHosp.setQuantity(recursoshsptlHosp.getQuantity() + transacaoRecurso.getQuantity());
+					addRecursos1.remove(transacaoRecurso);
+				}
 			}
 		}
-		for (RecursosHosp recursoshsptlHosp : hospital1.getRecursosHosp()) {
-			if (recursoshsptlHosp.getName().equals(transacaoRecurso.getName())) {
-				
-				recursoshsptlHosp.setQuantity(recursoshsptlHosp.getQuantity() + transacaoRecurso.getQuantity());
-				addRecursos1.remove(transacaoRecurso);
-			}
-		}
-	}
-		//add
-	hospital1.getRecursosHosp().addAll(addRecursos1);	
-	
-	hospital2.getRecursosHosp().addAll(addRecursos2);	
-		
-	// delete
-	hospital1.getRecursosHosp().removeAll(removerRecursos1);
-	hospital2.getRecursosHosp().removeAll(removerRecursos2);	
-	
-	hospitalRepository.save(hospital1);
-	hospitalRepository.save(hospital2);	
-			
+		// add
+		hospital1.getRecursosHosp().addAll(addRecursos1);
+
+		hospital2.getRecursosHosp().addAll(addRecursos2);
+
+		// delete
+		hospital1.getRecursosHosp().removeAll(removerRecursos1);
+		hospital2.getRecursosHosp().removeAll(removerRecursos2);
+
+		hospitalRepository.save(hospital1);
+		hospitalRepository.save(hospital2);
+
 	}
 }
-

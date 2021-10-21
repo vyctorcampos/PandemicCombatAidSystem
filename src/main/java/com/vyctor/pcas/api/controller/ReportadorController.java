@@ -20,33 +20,34 @@ import com.vyctor.pcas.domain.repository.TransacaoRepository;
 @RestController
 @RequestMapping("/report")
 public class ReportadorController {
-	
-	
+
 	@Autowired
 	HospitalRepository hospitalRepository;
-	
+
 	@Autowired
 	TransacaoRepository transacaoRepository;
-	
+
 	@Autowired
 	RecursosHospRepository recursosHospRepository;
-	
+
 	@Autowired
 	ReportadorService reportadorService;
-	
+
 	@GetMapping
-	public Reportador getReport(){
+	public Reportador getReport() {
 		List<Hospital> hospitalList = hospitalRepository.findAll();
 		List<Transacao> transacaoHistory = transacaoRepository.findAll();
 		List<RecursosHosp> recursosHospList = recursosHospRepository.findAll();
-		
+
 		float[] percetagemValue = reportadorService.calcularOcupacaoPaciente(hospitalList);
-		
-		List<ResourceAverageDto> resourceAverageList = reportadorService.calculateResourcesAverage(recursosHospList, hospitalList.size());
-		
-		Reportador report = new Reportador(percetagemValue[0], percetagemValue[1], transacaoHistory, resourceAverageList);
-		
+
+		List<ResourceAverageDto> resourceAverageList = reportadorService.calculateResourcesAverage(recursosHospList,
+				hospitalList.size());
+
+		Reportador report = new Reportador(percetagemValue[0], percetagemValue[1], transacaoHistory,
+				resourceAverageList);
+
 		return report;
 	}
-	
+
 }

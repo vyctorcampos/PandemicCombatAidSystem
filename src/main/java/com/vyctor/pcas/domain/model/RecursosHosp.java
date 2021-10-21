@@ -15,10 +15,10 @@ public class RecursosHosp {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "resource_id")
 	private long resource_id;
-	
+
 	@Column(name = "name")
 	private String name;
-	
+
 	@Column(name = "quantity")
 	private int quantity;
 
@@ -28,7 +28,7 @@ public class RecursosHosp {
 		this.quantity = quantity;
 	}
 
-	//Getters and Setters
+	// Getters and Setters
 	public long getResource_id() {
 		return resource_id;
 	}
@@ -53,5 +53,4 @@ public class RecursosHosp {
 		this.quantity = quantity;
 	}
 
-	
 }

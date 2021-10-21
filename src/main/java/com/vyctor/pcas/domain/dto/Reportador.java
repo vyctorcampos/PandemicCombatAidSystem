@@ -7,24 +7,24 @@ import com.vyctor.pcas.domain.model.Transacao;
 public class Reportador {
 
 	private float highOccupancyRate;
-	
+
 	private float lowOccupancyRate;
-	
+
 	private List<Transacao> historicoTransacaos;
-	
+
 	private List<ResourceAverageDto> resourceAverageList;
-	
-	
+
 	public Reportador(float highOccupancyRate, float lowOccupancyRate, List<Transacao> historicoTransacaos,
 			List<ResourceAverageDto> resourceAverageList) {
 		super();
-		setHighOccupancyRate (highOccupancyRate);
-		setLowOccupancyRate (lowOccupancyRate);
+		setHighOccupancyRate(highOccupancyRate);
+		setLowOccupancyRate(lowOccupancyRate);
 		setHistoricoTransacaos(historicoTransacaos);
-		setResourceAverageList (resourceAverageList);
+		setResourceAverageList(resourceAverageList);
 	}
 
-	public Reportador() {}
+	public Reportador() {
+	}
 
 	public float getHighOccupancyRate() {
 		return highOccupancyRate;

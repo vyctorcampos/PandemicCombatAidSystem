@@ -20,23 +20,20 @@ public class TransacaoController {
 
 	@Autowired
 	TransacaoRepository transacaoRepository;
-	
+
 	@Autowired
 	NegociacaoService negociacaoService;
-	
+
 	@GetMapping
-	public List<Transacao> getTransacaoList(){
+	public List<Transacao> getTransacaoList() {
 		return transacaoRepository.findAll();
 	}
-	
+
 	@PostMapping
 	public Transacao postTransacao(@RequestBody Transacao transacao) {
 		transacao.setNegotiation_date_time(LocalDateTime.now());
 		negociacaoService.negociar(transacao);
 		return transacaoRepository.save(transacao);
 	}
-	
-	
-	
-	
+
 }
