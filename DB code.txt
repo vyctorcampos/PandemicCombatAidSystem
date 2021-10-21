@@ -1,0 +1,61 @@
+drop database pcas;
+create database pcas;
+use pcas;
+
+create table hospital(
+hospital_id BIGINT PRIMARY KEY NOT NULL ,
+name VARCHAR(45) NOT NULL,
+address VARCHAR(45) NOT NULL,
+cnpj VARCHAR(45) NOT NULL,
+localization VARCHAR(45) NOT NULL,
+occupancy FLOAT NOT NULL
+);
+
+create table recursos(
+resource_id BIGINT PRIMARY KEY NOT NULL,
+name VARCHAR(45) NOT NULL,
+quantity INTEGER NOT NULL
+);
+
+create table hospital_resource_join_table(
+hospital_RH bigint,
+hospital_resource_RH bigint,
+FOREIGN KEY(hospital_RH) REFERENCES hospital(hospital_id),
+FOREIGN KEY(hospital_resource_RH) REFERENCES recursos(resource_id)
+) ENGINE = innodb;
+
+create table transacao(
+negotiation_id BIGINT PRIMARY KEY NOT NULL,
+id_first_hospital BIGINT NOT NULL,
+id_second_hospital BIGINT NOT NULL,
+negotiation_date_time datetime NOT NULL
+);
+
+create table negotiation_resource_join_table(
+transaction_RH bigint,
+hospital_resource_RH bigint,
+FOREIGN KEY(transaction_RH) REFERENCES transacao(negotiation_id),
+FOREIGN KEY(hospital_resource_RH) REFERENCES recursos(resource_id)
+);
+
+
+#------------Fixed resources and values------------
+
+create table resources(
+name varchar(12) NOT NULL PRIMARY KEY,
+value int NOT NULL
+);
+
+INSERT INTO resources VALUES("MÉDICO", 3);
+INSERT INTO resources VALUES("ENFERMEIRO", 3);
+INSERT INTO resources VALUES("RESPIRADOR", 5);
+INSERT INTO resources VALUES("TOMÓGRAFO", 12);
+INSERT INTO resources VALUES("AMBULÂNCIA", 10);
+#--------------------------------------------------
+
+
+SELECT * FROM hospital;
+SELECT * FROM recursos;
+SELECT * FROM hospital_resource_join_table;
+SELECT * FROM transacao;
+SELECT * FROM resources;
