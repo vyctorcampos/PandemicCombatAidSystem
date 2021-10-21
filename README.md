@@ -9,7 +9,10 @@ Quando o mundo é atingido por uma pandemia sem remédio imediato, além das hab
 * JUnit
 * Hibernate
 
-## -------------------------------DATABASE-------------------------
+## -------------------------------DATABASE------------------------
+
+Como default o spring.datasource.username=postgres vem como "postgres" 
+
 Dentro app/src/main/application.properties substitua spring.datasource.password=12345 para corresponder à sua senha do banco de dados.
 
 ## -------------------------------ENDPOINT-------------------------
@@ -26,12 +29,18 @@ Body: occupancy(float)
 
 # /negotiation
 GET /negotiation: Retorna uma lista com todas as negociações registradas
+
 POST /negotiation: Registra uma nova negociação.
+
 Body: id_first_hospital(long), id_second_hospital(long), resources_first_hospital{name(String), quantity(int)}, resources_second_hospital{name(String), quantity(int)}
 
 # /report
 GET /report: Retorna um relatório com:
+
 Porcentagem de hospitais com taxa de ocupação acima de 90%
+
 Porcentagem de hospitais com taxa de ocupação abaixo de 90%
+
 Média de recursos por hospital
+
 Histórico de negociações
