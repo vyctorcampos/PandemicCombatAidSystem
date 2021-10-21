@@ -22,7 +22,7 @@ GET /hospital: Retorna uma lista com todos os hospitais registrados.
 GET /hospital/{hospital_id}: Retorna o hospital registrado com o id informado.
 
 POST /hospital: Registra um novo hospital.
-Body: name(String), address(String), cnpj(String), localization(String), occupancy(float), recursosHosp{name(String), quantity(int)}
+Body: name(String), address(String), cnpj(String), localization(String), occupancy(float), recursosHosp{name(String)}
 
 PATCH /hospital/{hospital_id}: Atualiza a taxa de ocupação do hospital com o id informado.
 Body: occupancy(float)
