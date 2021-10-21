@@ -1,7 +1,11 @@
-drop database pcas;
-create database pcas;
-use pcas;
-
+CREATE DATABASE pcas
+  WITH OWNER = postgres
+       ENCODING = 'UTF8'
+       TABLESPACE = pg_default
+       LC_COLLATE = 'Portuguese_Brazil.1252'
+       LC_CTYPE = 'Portuguese_Brazil.1252'
+       CONNECTION LIMIT = -1;
+       
 create table hospital(
 hospital_id BIGINT PRIMARY KEY NOT NULL ,
 name VARCHAR(45) NOT NULL,
@@ -22,13 +26,13 @@ hospital_RH bigint,
 hospital_resource_RH bigint,
 FOREIGN KEY(hospital_RH) REFERENCES hospital(hospital_id),
 FOREIGN KEY(hospital_resource_RH) REFERENCES recursos(resource_id)
-) ENGINE = innodb;
+);
 
 create table transacao(
 negotiation_id BIGINT PRIMARY KEY NOT NULL,
 id_first_hospital BIGINT NOT NULL,
 id_second_hospital BIGINT NOT NULL,
-negotiation_date_time datetime NOT NULL
+negotiation_date_time DATE NOT NULL
 );
 
 create table negotiation_resource_join_table(
@@ -39,19 +43,17 @@ FOREIGN KEY(hospital_resource_RH) REFERENCES recursos(resource_id)
 );
 
 
-#------------Fixed resources and values------------
-
 create table resources(
 name varchar(12) NOT NULL PRIMARY KEY,
 value int NOT NULL
 );
 
-INSERT INTO resources VALUES("MÉDICO", 3);
-INSERT INTO resources VALUES("ENFERMEIRO", 3);
-INSERT INTO resources VALUES("RESPIRADOR", 5);
-INSERT INTO resources VALUES("TOMÓGRAFO", 12);
-INSERT INTO resources VALUES("AMBULÂNCIA", 10);
-#--------------------------------------------------
+INSERT INTO resources VALUES('MÉDICO', 3);
+INSERT INTO resources VALUES('ENFERMEIRO', 3);
+INSERT INTO resources VALUES('RESPIRADOR', 5);
+INSERT INTO resources VALUES('TOMÓGRAFO', 12);
+INSERT INTO resources VALUES('AMBULÂNCIA', 10);
+
 
 
 SELECT * FROM hospital;
