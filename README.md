@@ -1,7 +1,16 @@
 # PandemicCombatAidSystem
 Quando o mundo é atingido por uma pandemia sem remédio imediato, além das habilidades dos profissionais de saúde, é preciso ter um bom sistema de informações para ajudar nas tomadas de decisões, visando amenizar ao máximo seus impactos. Assim, ainda que não seja da área de saúde, você pode ajudar no combate. Para isso,  foi designado para desenvolver um sistema que irá coletar informações de todo país, organizá-las e prover informações com base nelas.
-## ------------------------------TECNOLOGIAS--------------------------
-## -------------------------------DATABASE--------------------------
+## ------------------------------TECNOLOGIAS------------------------
+* Java 8
+* Spring BOOT
+* Sprint DATA
+* Postgresql 9.4.X
+* Maven
+* JUnit
+* Hibernate
+
+## -------------------------------DATABASE-------------------------
+Dentro app/src/main/application.properties substitua spring.datasource.password=12345 para corresponder à sua senha do banco de dados.
 
 ## -------------------------------ENDPOINT-------------------------
 # /hospital
